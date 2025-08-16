@@ -395,44 +395,6 @@ def get_transcript():
     except Exception as e:
         print("Error in /get-transcript:", e)
         return jsonify({'error': f'Failed to fetch transcript: {e}'}), 400
-    
-    
-# ---
-    
-# @app.route('/search-videos', methods=['POST'])
-# def search_videos():
-#     body = request.get_json() or {}
-#     query = body.get('query', '').strip()
-#     if not query:
-#         return jsonify({'error': 'Missing search query'}), 400
-    
-#     try:
-#         # # Ensure your API key is properly configured
-#         # if not YOUTUBE_API_KEY or YOUTUBE_API_KEY == 'AIzaSyBNrlmMlakIZqE2x7dHLhyqMJQ8_34kXbA':
-#         #     return jsonify({'error': 'YouTube API key not configured'}), 500
-            
-#         search_response = youtube.search().list(
-#             q=query,
-#             part='id,snippet',
-#             maxResults=10,
-#             type='video',
-#             safeSearch="none"  # Add this to avoid restrictions
-#         ).execute()
-        
-#         videos = []
-#         for item in search_response.get('items', []):
-#             video_id = item['id']['videoId']
-#             videos.append({
-#                 'videoId': video_id,
-#                 'title': item['snippet']['title'],
-#                 'thumbnail': item['snippet']['thumbnails']['default']['url'],
-#                 'channel': item['snippet']['channelTitle']
-#             })
-            
-#         return jsonify({'videos': videos, 'status': 'success'})
-#     except Exception as e:
-#         print("Error in /search-videos:", str(e))
-#         return jsonify({'error': f'Search failed: {str(e)}'}), 500
 
 @app.route('/search-videos', methods=['POST'])
 def search_videos():
